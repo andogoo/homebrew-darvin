@@ -1,9 +1,9 @@
 class Darvin < Formula
   desc "Personal AI assistant kernel — local-first, multi-CLI, scheduled"
   homepage "https://github.com/andogoo/darvin-core"
-  url "https://github.com/andogoo/darvin-core/releases/download/v0.1.0/darvin-v0.1.0.tar.gz"
-  sha256 "e65888ee18e1edcb8704f68bfa731a1c92c99d6733f2c95da82857bc4bd2506a"
-  version "0.1.0"
+  url "https://github.com/andogoo/darvin-core/releases/download/v0.1.1/darvin-v0.1.1.tar.gz"
+  sha256 "25430bf245ae947faf7835a3ef0f9c8a1b52158180c6fa2e186a2f081f96e86f"
+  version "0.1.1"
   license "AGPL-3.0-or-later"
 
   depends_on "node@20"
