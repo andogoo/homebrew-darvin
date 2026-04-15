@@ -1,23 +1,25 @@
 class Darvin < Formula
   desc "Personal AI assistant kernel — local-first, multi-CLI, scheduled"
   homepage "https://github.com/andogoo/darvin-core"
-  url "https://github.com/andogoo/darvin-core/releases/download/v0.1.2/darvin-v0.1.2.tar.gz"
-  sha256 "6f3efdf0e8f07cbc9a75af1e9c5172d8cea3d11396ff89355a06d7f263bf374a"
-  version "0.1.2"
+  url "https://github.com/andogoo/darvin-core/releases/download/v0.1.3/darvin-v0.1.3.tar.gz"
+  sha256 "7898235f215499cd3b4c7de8e24d5efa03e3aa2b2b4ab5258cf8200a299b2c6c"
+  version "0.1.3"
   license "AGPL-3.0-or-later"
 
-  depends_on "node@20"
+  depends_on "node"
   depends_on "tmux"
   depends_on "git"
 
   def install
     libexec.install Dir["*"]
 
+    node_bin = Formula["node"].opt_bin
     (bin/"darvin").write <<~SH
       #!/usr/bin/env bash
       set -euo pipefail
+      export PATH="#{node_bin}:$PATH"
       cd "#{libexec}"
-      exec "#{Formula["node@20"].opt_bin}/node" "packages/installer/dist/index.js" "$@"
+      exec "#{node_bin}/node" "packages/installer/dist/index.js" "$@"
     SH
     chmod 0755, bin/"darvin"
 
