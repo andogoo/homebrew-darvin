@@ -1,9 +1,9 @@
 class Darvin < Formula
   desc "Personal AI assistant kernel — local-first, multi-CLI, scheduled"
   homepage "https://github.com/andogoo/darvin-core"
-  url "https://github.com/andogoo/darvin-core/releases/download/v0.1.11/darvin-v0.1.11.tar.gz"
-  sha256 "b7692aeef8ce3c941ab60b200159a2533ef4f5d42219c7b8e9cdcf1b0a544cfc"
-  version "0.1.11"
+  url "https://github.com/andogoo/darvin-core/releases/download/v0.1.12/darvin-v0.1.12.tar.gz"
+  sha256 "72db471876f41990e79693a9fea98de7beabccec115343c4ca2b9b6e9368e2df"
+  version "0.1.12"
   license "AGPL-3.0-or-later"
 
   depends_on "node"
@@ -17,6 +17,8 @@ class Darvin < Formula
     (bin/"darvin").write <<~SH
       #!/usr/bin/env bash
       set -euo pipefail
+      # Expose the brew-linked node + npm to darvin AND to any subprocess
+      # it spawns (e.g. `npm install -g @anthropic-ai/claude-code` inside setup).
       export PATH="#{node_bin}:$PATH"
       cd "#{libexec}"
       exec "#{node_bin}/node" "packages/installer/dist/index.js" "$@"
@@ -31,7 +33,7 @@ class Darvin < Formula
     <<~CAVEATS
       Дарвин е инсталиран. За да завършиш настройката:
 
-          darvin setup
+          darvin init
 
       Това ще открие кои AI CLI-и имаш (Claude Code, Codex, Gemini),
       ще ти помогне да се логнеш в тях и ще избере локален модел
