@@ -1,9 +1,9 @@
 class Darvin < Formula
   desc "Personal AI assistant kernel — local-first, multi-CLI, scheduled"
   homepage "https://github.com/andogoo/darvin-core"
-  url "https://github.com/andogoo/darvin-core/releases/download/v0.1.12/darvin-v0.1.12.tar.gz"
-  sha256 "72db471876f41990e79693a9fea98de7beabccec115343c4ca2b9b6e9368e2df"
-  version "0.1.12"
+  url "https://github.com/andogoo/darvin-core/releases/download/v0.1.13/darvin-v0.1.13.tar.gz"
+  sha256 "3e0f70005caaff3163524cc338f8977064f36c4d52fe862eb151ef6f1e41d092"
+  version "0.1.13"
   license "AGPL-3.0-or-later"
 
   depends_on "node"
@@ -21,7 +21,7 @@ class Darvin < Formula
       # it spawns (e.g. `npm install -g @anthropic-ai/claude-code` inside setup).
       export PATH="#{node_bin}:$PATH"
       cd "#{libexec}"
-      exec "#{node_bin}/node" "packages/installer/dist/index.js" "$@"
+      exec "#{node_bin}/node" "packages/installer/dist-bundle/index.js" "$@"
     SH
     chmod 0755, bin/"darvin"
 
